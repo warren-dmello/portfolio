@@ -651,11 +651,18 @@ img { display: block; max-width: 100%; }
   .image-pair { padding: 0 20px; }
   .other-inner { padding: 0 20px; }
   .top-nav { max-width: calc(100vw - 24px); }
-  .hero-scroll-hint { left: 20px; }
+  .hero-scroll-hint { display: none; }
 
 
   /* Hero: tighter on phones */
   .hero { padding: 80px 0 52px; min-height: 0; }
+  .hero-image-wrap { overflow: visible; }
+  .hero-image-wrap img {
+    aspect-ratio: auto;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+  }
   /* Sections: less vertical air */
   .section { padding: 60px 0; }
   /* Image pair wrapper: compact spacing */
