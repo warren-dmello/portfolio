@@ -888,6 +888,20 @@
       margin-bottom: 0;
     }
 
+    .project-card.flipped {
+      gap: 20px;
+    }
+    .project-card.flipped .project-content {
+      margin-bottom: 0;
+    }
+    .project-card.flipped .project-visual {
+      margin-bottom: 0;
+    }
+    .project-card.flipped .project-thumb img {
+      aspect-ratio: auto;
+      object-fit: contain;
+    }
+
     /* About: use clip-path instead of negative margins to prevent overflow */
     .about {
       margin: 0;
@@ -942,8 +956,21 @@
     .project-content {
       padding-bottom: 0;
     }
+    .project-card.flipped {
+      gap: 16px;
+    }
+    .project-card.flipped .project-content {
+      min-width: 0;
+    }
+    .project-card.flipped h3 {
+      font-size: clamp(24px, 5.6vw, 30px);
+      text-wrap: balance;
+    }
     .project-thumb img {
       aspect-ratio: 4 / 3;
+    }
+    .project-card.flipped .project-thumb img {
+      aspect-ratio: auto;
     }
 
     /* About: reduce vertical padding on phones */
