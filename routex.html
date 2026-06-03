@@ -846,6 +846,13 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
 }
+.screen-ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
 .screen-ph:hover {
   transform: translateY(-5px);
   box-shadow: 0 28px 52px -18px rgba(20, 20, 20, 0.2);
@@ -1674,8 +1681,7 @@ img { display: block; max-width: 100%; }
     <div class="annotated" data-reveal data-delay="2">
       <div class="screen-col sticky">
         <div class="screen-ph">
-          <div class="screen-label-pill">[ PLACEHOLDER: Homepage ]</div>
-          <div class="screen-sublabel">Destination-first layout: Where to? search, editable pickup, Leave Now CTA, contextual intelligence strip</div>
+          <img src="assets/routx-home.png" alt="RouteX Destination-first Homepage Screen" loading="lazy" />
         </div>
       </div>
       <div class="text-col">
@@ -1749,8 +1755,7 @@ img { display: block; max-width: 100%; }
       </div>
       <div class="screen-col sticky">
         <div class="screen-ph" style="aspect-ratio: 9 / 14; max-height: 480px;">
-          <div class="screen-label-pill">[ PLACEHOLDER: Journey Results ]</div>
-          <div class="screen-sublabel">Comparison list: time range, duration, cost, single Fastest/Cheapest tag per card</div>
+          <img src="assets/routex-journey-results.png" alt="RouteX Journey Options Comparison Screen" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1803,8 +1808,7 @@ img { display: block; max-width: 100%; }
     <div class="annotated" data-reveal data-delay="2">
       <div class="screen-col sticky">
         <div class="screen-ph">
-          <div class="screen-label-pill">[ PLACEHOLDER: Execution Mode ]</div>
-          <div class="screen-sublabel">ETA top, NEXT badge on current action, completed legs muted above, upcoming legs dimmed below</div>
+          <img src="assets/routex-execution-mode.png" alt="RouteX Active Journey Execution Screen" loading="lazy" />
         </div>
       </div>
       <div class="text-col">
@@ -1865,8 +1869,7 @@ img { display: block; max-width: 100%; }
       </div>
       <div class="screen-col sticky">
         <div class="screen-ph">
-          <div class="screen-label-pill">[ PLACEHOLDER: Transfer Guidance Overlay ]</div>
-          <div class="screen-sublabel">Bottom sheet: primary walk instruction, buffer time chip, Board CTA, journey context visible behind</div>
+          <img src="assets/routex-transfer-guidance.png" alt="RouteX Step-by-step Transfer Guidance Overlay" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1921,8 +1924,7 @@ img { display: block; max-width: 100%; }
     <div class="annotated" data-reveal data-delay="2">
       <div class="screen-col sticky">
         <div class="screen-ph screen-ph--dark">
-          <div class="screen-label-pill">[ PLACEHOLDER: Disruption Screen ]</div>
-          <div class="screen-sublabel">Original plan greyed + struck through, one updated plan prominently presented, confirm CTA, 'See other routes' as secondary</div>
+          <img src="assets/routex-disruption.png" alt="RouteX Real-time Disruption Alternative Option Screen" loading="lazy" />
         </div>
       </div>
       <div class="text-col">
