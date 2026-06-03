@@ -37,7 +37,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
   body {
     background-color: var(--bg);
     /* Halftone dot grid — very subtle, looks printed */
@@ -68,7 +68,7 @@
 
   .container {
     width: 100%;
-    max-width: 1180px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 32px;
   }
@@ -655,8 +655,9 @@
   .project-thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center top;
+    aspect-ratio: 16/9;
     display: block;
     transition: transform 0.6s var(--ease);
     box-shadow: none;
@@ -692,8 +693,9 @@
   /* ==================== ABOUT ==================== */
   .about {
     background: #141414;
-    margin: 0 -100vw;
-    padding: 140px 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 140px max(32px, calc(50vw - 50% + 32px));
     transition: background 1.2s ease;
   }
   .about.scrolled-in { background: #1e3d0e; }
@@ -861,47 +863,96 @@
     }
     .project-arrow { bottom: 32px; left: 32px; }
     .project-content { padding-bottom: 0; margin-bottom: 16px; }
-    .project-thumb {
-      height: calc(240px + var(--card-pad) - var(--thumb-inset-top));
-    }
-    .project-card.lilac .project-thumb { height: 240px; }
 
-    .about { padding: 100px 100vw; }
+    /* Mobile cards: auto-height thumbnails, let images breathe */
+    .project-thumb {
+      height: auto;
+    }
+    .project-thumb img {
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .project-card.lilac .project-thumb { height: auto; }
+    .project-card.lilac .project-thumb img {
+      border-radius: 12px;
+    }
+
+    /* Visual column: flush bottom, reasonable top inset */
+    .project-visual {
+      margin-top: 0;
+      margin-bottom: calc(-1 * var(--card-pad));
+    }
+    .project-card.lilac .project-visual {
+      margin-bottom: 0;
+    }
+
+    /* About: use clip-path instead of negative margins to prevent overflow */
+    .about {
+      margin: 0;
+      padding: 100px 20px;
+    }
     .about-inner { max-width: 100%; }
   }
 
   @media (max-width: 600px) {
-    .nav { padding: 5px 5px 5px 10px; gap: 2px; }
+    /* Navbar: constrain width so it stays centered */
+    .nav {
+      padding: 5px 5px 5px 10px;
+      gap: 2px;
+      max-width: calc(100vw - 32px);
+      width: auto;
+    }
     .nav-avatar { width: 28px; height: 28px; font-size: 12px; margin-right: 4px; }
-    .nav-link { padding: 7px 12px; font-size: 13px; }
+    .nav-link { padding: 7px 10px; font-size: 13px; }
 
-    .float { --float-hit: 36px; }
-    .float-ar { width: 80px; }
-    .float-books { width: 100px; }
-    .float-coffee { width: 70px; }
-    .float-vinyl { width: 95px; }
+    /* Floating elements: smaller and contained */
+    .float { --float-hit: 24px; }
+    .float-ar { width: 70px; left: 2%; }
+    .float-books { width: 90px; left: 2%; }
+    .float-coffee { width: 60px; right: 2%; }
+    .float-vinyl { width: 80px; right: 2%; }
 
-    .hero h1 { font-size: clamp(38px, 12vw, 64px); }
-    .hero-ps { font-size: 15px; bottom: 20px; padding: 0 20px; }
+    .hero h1 { font-size: clamp(34px, 10vw, 56px); padding: 0 8px; }
+    .hero-ps { font-size: 14px; bottom: 20px; padding: 0 20px; }
+    .hero-sub { font-size: 17px; }
 
-    .project-card { --card-pad: 24px; padding: var(--card-pad); }
-    .project-arrow { bottom: 24px; left: 24px; width: 42px; height: 42px; }
-    .project-card.flipped .project-arrow { left: 24px; }
-  
+    /* Project cards: tighter padding, better image sizing */
+    .project-card {
+      --card-pad: 24px;
+      padding: var(--card-pad);
+      border-radius: 20px;
+    }
+    .project-card h3 { font-size: clamp(24px, 6vw, 32px); }
+    .project-card .desc { font-size: 14px; line-height: 1.5; }
+    .project-tag { font-size: 10px; padding: 6px 12px; margin-bottom: 16px; }
+    .project-arrow {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      width: 42px;
+      height: 42px;
+      margin-top: 20px;
+    }
+    .project-card.flipped .project-arrow {
+      left: auto;
+      right: auto;
+    }
+    .project-content {
+      padding-bottom: 0;
+    }
+    .project-thumb img {
+      aspect-ratio: 4 / 3;
+    }
 
-  /* About: reduce vertical padding on phones */
-  .about { padding: 72px 100vw; }
-  .about-para { font-size: 20px; line-height: 1.62; }
-  /* Hero sub: ensure readable size */
-  .hero-sub { font-size: 17px; }
-  /* Floating images: pull slightly inward so they don't crowd edges */
-  .float-ar   { left: 2%; }
-  .float-coffee { right: 2%; }
-  .float-books  { left: 2%; }
-  .float-vinyl  { right: 2%; }
-  /* Footer CTA: tighter bottom padding */
-  .footer { padding: 60px 0 24px; }
-}
+    /* About: reduce vertical padding on phones */
+    .about { padding: 72px 16px; }
+    .about-para { font-size: 20px; line-height: 1.62; }
+
+    /* Footer CTA: tighter bottom padding */
+    .footer { padding: 60px 0 24px; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -915,9 +966,15 @@
   @media (max-width: 400px) {
     /* Very small phones (< 400px) */
     .float-ar, .float-coffee, .float-books, .float-vinyl { opacity: 0.5; }
-    .project-card { --card-pad: 20px; padding: var(--card-pad); border-radius: 18px; }
-    .project-arrow { bottom: 20px; left: 20px; }
-    .project-card.flipped .project-arrow { left: 20px; }
+    .project-card {
+      --card-pad: 16px;
+      padding: var(--card-pad);
+      border-radius: 16px;
+    }
+    .project-card h3 { font-size: 22px; }
+    .project-card .desc { font-size: 13px; }
+    .project-arrow { width: 38px; height: 38px; margin-top: 16px; }
+    .nav-link { padding: 6px 8px; font-size: 12px; }
   }
 
 </style>
