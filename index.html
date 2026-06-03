@@ -486,6 +486,8 @@
     display: flex;
     flex-direction: column;
     gap: 28px;
+    width: min(100%, 1080px);
+    margin: 0 auto;
   }
 
   .project-card {
@@ -854,6 +856,9 @@
       grid-template-columns: 1fr;
       padding: var(--card-pad);
       min-height: auto;
+    }
+    .project-card.flipped {
+      grid-template-columns: 1fr;
     }
     .project-card.flipped .project-content { order: 1; }
     .project-card.flipped .project-visual { order: 2; }
