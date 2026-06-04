@@ -94,14 +94,8 @@
   .nav-avatar {
     width: 32px; height: 32px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #141414, #3d7e20);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 14px;
-    color: #fff;
+    object-fit: contain;
+    display: block;
     margin-right: 6px;
   }
   .nav-link {
@@ -923,7 +917,7 @@
       max-width: calc(100vw - 32px);
       width: auto;
     }
-    .nav-avatar { width: 28px; height: 28px; font-size: 12px; margin-right: 4px; }
+    .nav-avatar { width: 28px; height: 28px; margin-right: 4px; }
     .nav-link { padding: 7px 10px; font-size: 13px; }
 
     /* Floating elements: smaller and contained */
@@ -949,6 +943,7 @@
     .project-tag { font-size: 10px; padding: 6px 12px; margin-bottom: 16px; }
     .project-arrow {
       position: relative;
+      order: 3;
       bottom: auto;
       left: auto;
       width: 42px;
@@ -1016,7 +1011,7 @@
 
 <!-- ==================== PILL NAV ==================== -->
 <nav class="nav" aria-label="Primary">
-  <span class="nav-avatar" aria-hidden="true">W</span>
+  <img src="image 178.png" alt="" class="nav-avatar" aria-hidden="true"/>
   <a href="#" class="nav-link" data-target="home">Home</a>
   <a href="#work" class="nav-link" data-target="work">Work</a>
   <a href="#about" class="nav-link" data-target="about">About</a>
