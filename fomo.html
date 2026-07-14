@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ElderAid · Warren Dmello</title>
-<meta name="description" content="ElderAid: a calm, accessible mobile app supporting seniors and their caregivers. UI design case study." />
+<title>FOMO · Warren Dmello</title>
+<meta name="description" content="FOMO website redesign: giving a premium coworking campus a site that finally matches the space. Designed end to end, shipped and live." />
 <link rel="icon" href="assets/favicon.png" type="image/png" sizes="212x212" />
 <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
 
@@ -14,19 +14,20 @@
 
 <style>
 /* ============================================================
-   ROOT — portfolio palette + ElderAid terracotta accent
+   ROOT - portfolio palette + FOMO pink
    ============================================================ */
 :root {
-  --bg:           #e7e9ea;
-  --bg-2:         #dce0e2;
-  --bg-3:         #d1d5d8;
+  --bg:           #e9e5d8;
+  --bg-2:         #dedad0;
+  --bg-3:         #d4d0c4;
   --ink:          #141414;
   --ink-soft:     #2e2e2e;
   --ink-muted:    #7a7a7a;
   --rule:         rgba(20, 20, 20, 0.14);
-  --proj:         #b3574e;
-  --proj-dim:     rgba(179, 87, 78, 0.08);
-  --proj-mid:     rgba(179, 87, 78, 0.18);
+  --proj:         #d63e73;
+  --proj-dim:     rgba(214, 62, 115, 0.08);
+  --proj-mid:     rgba(214, 62, 115, 0.18);
+  --shipped:      #3d7e20;
   --display:      'Fraunces', 'Times New Roman', serif;
   --sans:         'Inter Tight', -apple-system, sans-serif;
   --mono:         'Space Mono', 'Courier New', monospace;
@@ -40,6 +41,8 @@
 html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
 body {
   background-color: var(--bg);
+  background-image: radial-gradient(circle, rgba(20, 20, 20, 0.07) 1px, transparent 1px);
+  background-size: 14px 14px;
   color: var(--ink);
   font-family: var(--sans);
   font-size: 16px;
@@ -56,7 +59,7 @@ body::after {
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
-  opacity: 0.045;
+  opacity: 0.055;
   mix-blend-mode: multiply;
 }
 a { color: inherit; text-decoration: none; }
@@ -80,12 +83,12 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    LAYOUT CONTAINERS
    ============================================================ */
-.container       { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 40px; }
-.container--mid  { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+.container        { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+.container--mid   { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 40px; }
 .container--narrow { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 40px; }
 
 /* ============================================================
-   TOP NAV — pill, consistent with portfolio
+   TOP NAV - pill
    ============================================================ */
 .top-nav {
   position: fixed;
@@ -93,7 +96,7 @@ img { display: block; max-width: 100%; }
   left: 50%;
   transform: translateX(-50%);
   z-index: 300;
-  background: rgba(231, 233, 234, 0.92);
+  background: rgba(233, 229, 216, 0.92);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border: 1px solid var(--rule);
@@ -134,7 +137,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================================
-   SIDE NAV — floating right rail with dots
+   SIDE NAV - floating right rail
    ============================================================ */
 .side-nav {
   position: fixed;
@@ -222,9 +225,20 @@ img { display: block; max-width: 100%; }
 .hero-grid {
   position: absolute;
   inset: 0;
+  background-image: radial-gradient(circle, rgba(20,20,20,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
   pointer-events: none;
+}
+
+/* Tag row holds the type tag + the shipped status */
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
 }
 
 .hero-tag {
@@ -232,7 +246,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 8px;
   background: var(--proj-dim);
-  border: 1px solid rgba(179, 87, 78, 0.20);
+  border: 1px solid rgba(214, 62, 115, 0.2);
   padding: 6px 14px;
   border-radius: 100px;
   font-family: var(--mono);
@@ -241,7 +255,6 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--proj);
-  margin-bottom: 28px;
 }
 .hero-tag-dot {
   width: 5px; height: 5px;
@@ -249,6 +262,36 @@ img { display: block; max-width: 100%; }
   background: var(--proj);
   animation: pulse 2.4s ease-in-out infinite;
 }
+
+/* Shipped / live status tag */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(61, 126, 32, 0.08);
+  border: 1px solid rgba(61, 126, 32, 0.24);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--shipped);
+}
+.hero-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--shipped);
+  box-shadow: 0 0 0 0 rgba(61, 126, 32, 0.5);
+  animation: shippedPulse 2.4s var(--ease) infinite;
+}
+@keyframes shippedPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(61, 126, 32, 0.5); }
+  70%  { box-shadow: 0 0 0 6px rgba(61, 126, 32, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(61, 126, 32, 0); }
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.5; transform: scale(0.7); }
@@ -257,13 +300,21 @@ img { display: block; max-width: 100%; }
 .hero-h1 {
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(72px, 12vw, 180px);
+  font-size: clamp(72px, 13vw, 180px);
   line-height: 0.88;
   letter-spacing: -0.045em;
   margin-bottom: 20px;
   position: relative;
   z-index: 2;
-  color: var(--ink);
+}
+.hero-h1-name { color: var(--ink); display: block; }
+.hero-h1-sub {
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--proj);
+  font-size: clamp(44px, 7.5vw, 110px);
+  margin-top: 6px;
 }
 
 .hero-subtitle {
@@ -311,12 +362,11 @@ img { display: block; max-width: 100%; }
 }
 .meta-value a {
   color: var(--proj);
-  border-bottom: 1px solid rgba(179, 87, 78, 0.30);
-  transition: border-color 0.2s;
+  border-bottom: 1px solid rgba(214,62,115,0.3);
+  transition: border-color 0.22s;
 }
 .meta-value a:hover { border-bottom-color: var(--proj); }
 
-/* Scroll indicator */
 .hero-scroll-hint {
   position: absolute;
   bottom: 36px;
@@ -352,29 +402,83 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    HERO IMAGE
    ============================================================ */
-.hero-image-block {
-  margin: 72px 0 0;
+.hero-image-section {
+  padding: 0 0 64px;
+}
+.hero-image-wrap {
+  overflow: hidden;
   border-radius: 20px;
-  overflow: visible;
-  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: 520px;
   transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
 }
-.hero-image-block:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 32px 64px -20px rgba(20, 20, 20, 0.18);
+.hero-image-wrap:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 64px -24px rgba(45,15,30,0.22);
 }
-.hero-image-block img {
+.hero-image-wrap img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: center;
-  will-change: transform;
+  height: 110%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================
+   WIDE IMAGES
+   ============================================================ */
+.wide-image-wrap {
+  overflow: hidden;
+  border-radius: 20px;
+  aspect-ratio: 16 / 9;
+  margin: 48px 0;
+}
+.wide-image-wrap img {
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================
+   IMAGE PLACEHOLDERS (replace with real screenshots)
+   ============================================================ */
+.ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 32px;
+  background:
+    linear-gradient(var(--proj-dim), var(--proj-dim)),
+    repeating-linear-gradient(45deg, rgba(20,20,20,0.035) 0 14px, transparent 14px 28px);
+  border: 1px dashed rgba(214,62,115,0.4);
+  border-radius: inherit;
+}
+.ph-icon { width: 28px; height: 28px; color: var(--proj); opacity: 0.7; }
+.ph-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.ph-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--ink-muted);
+  max-width: 380px;
+  line-height: 1.55;
 }
 
 /* ============================================================
    SECTION WRAPPERS
    ============================================================ */
-.bleed-alt  { background: var(--bg-2); }
+.bleed-alt { background: var(--bg-2); }
 
 /* ============================================================
    SECTION STRUCTURE
@@ -413,30 +517,24 @@ img { display: block; max-width: 100%; }
 }
 .section-heading em { font-style: italic; font-weight: 300; }
 
-.lead-text {
-  font-family: var(--display);
-  font-size: clamp(19px, 2vw, 24px);
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: -0.012em;
-  color: var(--ink-soft);
-  max-width: 660px;
-  margin-bottom: 24px;
-}
-.lead-text em { font-style: italic; font-weight: 300; }
-
 .body-text {
   font-size: 16px;
   line-height: 1.78;
   color: var(--ink-soft);
   max-width: 620px;
 }
+.body-text a {
+  color: var(--proj);
+  border-bottom: 1px solid rgba(214,62,115,0.3);
+  transition: border-color 0.22s;
+}
+.body-text a:hover { border-bottom-color: var(--proj); }
 .body-text + .body-text { margin-top: 18px; }
 
 .rule-line { height: 1px; background: var(--rule); margin: 52px 0; }
 
 /* ============================================================
-   CALLOUT / KEY INSIGHT BLOCK
+   CALLOUT BLOCK
    ============================================================ */
 .callout {
   border-left: 3px solid var(--proj);
@@ -466,32 +564,28 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================================
-   IMAGE PAIR — two portrait screens side by side
+   LIVE SITE CTA
    ============================================================ */
-.img-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin: 72px 0;
+.live-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--proj);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-top: 8px;
+  box-shadow: 0 8px 24px -8px rgba(214, 62, 115, 0.5);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.img-pair-item {
-  border-radius: 16px;
-  overflow: hidden;
-  aspect-ratio: 3 / 4;
-  position: relative;
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+.live-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -8px rgba(214, 62, 115, 0.55);
 }
-.img-pair-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 28px 52px -18px rgba(20, 20, 20, 0.22);
-}
-.img-pair-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
+.live-cta svg { width: 14px; height: 14px; }
 
 /* ============================================================
    OTHER PROJECTS
@@ -537,8 +631,8 @@ img { display: block; max-width: 100%; }
 }
 .other-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 40px -16px rgba(10,51,35,0.14);
-  border-color: rgba(179,87,78,0.22);
+  box-shadow: 0 18px 40px -16px rgba(45,15,30,0.14);
+  border-color: rgba(214,62,115,0.22);
 }
 .other-card .arrow {
   width: 32px; height: 32px;
@@ -635,56 +729,42 @@ img { display: block; max-width: 100%; }
   .hero-meta-item:nth-child(even) { padding-left: 24px !important; border-left: 1px solid var(--rule) !important; }
   .hero-meta-item:nth-child(n+3)  { padding-top: 24px; border-top: 1px solid var(--rule); }
 
-  .img-pair { grid-template-columns: 1fr; gap: 14px; margin: 48px 0; }
   .other-grid { grid-template-columns: 1fr; gap: 10px; }
   .other-projects { padding: 60px 0; }
-  .other-inner { padding: 0 28px; }
 
-
-  /* Scroll hint aligns with narrowed container padding */
   .hero-scroll-hint { left: 28px; }
 }
 
 @media (max-width: 560px) {
   .container, .container--mid, .container--narrow { padding: 0 20px; }
   .other-inner { padding: 0 20px; }
-  .hero-h1 { font-size: clamp(60px, 16vw, 100px); }
+  .hero-h1 { font-size: clamp(58px, 16vw, 100px); }
+  .hero-h1-sub { font-size: clamp(36px, 10vw, 64px); }
   .top-nav { max-width: calc(100vw - 24px); }
   .hero-scroll-hint { display: none; }
 
-
-  /* Hero: tighter on phones */
   .hero { padding: 80px 0 52px; min-height: 0; }
-  /* Sections: less vertical air */
   .section { padding: 60px 0; }
-  /* Hero image: smaller margin + softer radius */
-  .hero-image-block { margin: 48px 0 0; border-radius: 14px; }
-  /* Image pairs: tighter stack */
-  .img-pair { margin: 44px 0; gap: 12px; }
-  /* Callout: compact padding */
+  .wide-image-wrap { margin: 32px 0; border-radius: 14px; }
   .callout { padding: 16px 18px; }
-  /* Other work section */
   .other-projects { padding: 48px 0; }
   .other-card { padding: 22px 22px 18px; border-radius: 14px; }
-  /* Safe word wrapping for large headings */
   .section-heading { overflow-wrap: break-word; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal]   { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-image-block img { transform: none !important; }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-  @media (max-width: 400px) {
-    /* Sub-400px safety: reduce hero heading floor, tighten spacing */
-    .top-nav { padding: 4px 4px 4px 10px; font-size: 12px; }
-    .nav-back { font-size: 12px; }
-    .hero-meta { gap: 20px 0; }
-    .section { padding: 52px 0; }
-    .section-heading { font-size: 34px; }
-    .callout { padding: 14px 16px; }
-  }
+@media (max-width: 400px) {
+  .top-nav { padding: 4px 4px 4px 10px; font-size: 12px; }
+  .nav-back { font-size: 12px; }
+  .hero-meta { gap: 20px 0; }
+  .section { padding: 52px 0; }
+  .section-heading { font-size: 34px; }
+  .callout { padding: 14px 16px; }
+}
 
 </style>
 </head>
@@ -702,7 +782,7 @@ img { display: block; max-width: 100%; }
     Portfolio
   </a>
   <div class="nav-sep" aria-hidden="true"></div>
-  <span class="nav-title">ElderAid</span>
+  <span class="nav-title">FOMO</span>
 </nav>
 
 <!-- SIDE NAV (desktop) -->
@@ -715,38 +795,48 @@ img { display: block; max-width: 100%; }
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="container">
 
-    <div class="hero-tag" data-reveal>
-      <span class="hero-tag-dot" aria-hidden="true"></span>
-      Mobile App Design &nbsp;·&nbsp; IFP UI Challenge
+    <div class="hero-tags" data-reveal>
+      <span class="hero-tag">
+        <span class="hero-tag-dot" aria-hidden="true"></span>
+        Website Redesign &nbsp;·&nbsp; 2026
+      </span>
+      <span class="hero-status">
+        <span class="hero-status-dot" aria-hidden="true"></span>
+        Shipped
+      </span>
     </div>
 
-    <h1 class="hero-h1" data-reveal data-delay="1">ElderAid</h1>
+    <h1 class="hero-h1">
+      <span class="hero-h1-name" data-reveal data-delay="1">FOMO</span>
+      <span class="hero-h1-sub" data-reveal data-delay="2">website redesign</span>
+    </h1>
 
-    <p class="hero-subtitle" data-reveal data-delay="2">
-      a senior care app
+    <p class="hero-subtitle" data-reveal data-delay="3">
+      A workspace brand that looks as considered as the space it represents.
     </p>
 
-    <div class="hero-meta" data-reveal data-delay="3">
+    <div class="hero-meta" data-reveal data-delay="4">
       <div class="hero-meta-item">
         <div class="meta-label">Type</div>
-        <div class="meta-value">Mobile App Design</div>
+        <div class="meta-value">Website Redesign</div>
       </div>
       <div class="hero-meta-item">
         <div class="meta-label">Year</div>
-        <div class="meta-value">2024</div>
+        <div class="meta-value">2026</div>
       </div>
       <div class="hero-meta-item">
         <div class="meta-label">Role</div>
-        <div class="meta-value">Designer</div>
+        <div class="meta-value">Lead Designer</div>
       </div>
       <div class="hero-meta-item">
-        <div class="meta-label">Submission</div>
-        <div class="meta-value"><a href="https://drive.google.com/file/d/10Sau8CjL0e1tk_7WIFYk-HDpmI2rKmQ-/view?usp=sharing" target="_blank" rel="noopener">View file</a></div>
+        <div class="meta-label">Live</div>
+        <div class="meta-value">
+          <a href="https://fomo.no/" target="_blank" rel="noopener noreferrer">Visit fomo.no ↗</a>
+        </div>
       </div>
     </div>
 
   </div>
-
   <div class="hero-scroll-hint" aria-hidden="true">
     <span>Scroll</span>
     <div class="scroll-line"></div>
@@ -754,205 +844,163 @@ img { display: block; max-width: 100%; }
 </header>
 
 <!-- HERO IMAGE -->
-<div class="container" style="padding-bottom: 96px;">
-  <div class="hero-image-block" data-reveal data-parallax>
-    <img
-      src="https://framerusercontent.com/images/4jRbHOybwbKDplgseiDXiSNs4BY.png"
-      alt="ElderAid app overview screens"
-      loading="eager"
-    />
+<!-- Replace the .ph block below with:
+     <img src="assets/fomo-hero.png" alt="FOMO homepage redesign" data-parallax /> -->
+<div class="hero-image-section">
+  <div class="container" data-reveal="fade">
+    <div class="hero-image-wrap">
+      <div class="ph">
+        <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="ph-label">Hero screenshot</span>
+        <span class="ph-sub">Drop a wide export of the fomo.no homepage here (16:9 works best).</span>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- ============================================================
-     01 — THE PROBLEM
+     01 - OVERVIEW
      ============================================================ -->
-<section class="section" id="s-problem">
+<section class="section" id="s-overview">
   <div class="container--mid">
 
-    <p class="section-eyebrow" data-reveal>01 · The Problem</p>
+    <p class="section-eyebrow" data-reveal>01 · Overview</p>
     <h2 class="section-heading" data-reveal data-delay="1">
-      Designing for<br><em>older adults</em>
+      As considered as<br><em>the space itself</em>
     </h2>
 
     <p class="body-text" data-reveal data-delay="2">
-      This project was created during a fifty-hour design sprint for the IFP UI Challenge. I started by reading about common issues older adults face. Forgetting medication or appointments came up repeatedly, and many healthcare sources point to this as a major cause of preventable health problems.
+      FOMO is a premium coworking and office campus in Sandnes, Norway. Four buildings, more than 200 companies, and a brand built around world-class design. The physical spaces are genuinely some of the nicest coworking environments in the region, and people are consistently impressed the moment they walk in.
     </p>
-
-    <p class="body-text" data-reveal data-delay="2">
-      Older adults often struggle with long or complex tasks because working memory tends to decline with age. This meant the app needed short steps, clear visuals and predictable flows. At the same time, I realised that elderly care is rarely handled by one person. Caregivers and family members also carry stress and uncertainty: they want to know how their loved ones are doing without feeling intrusive.
+    <p class="body-text" data-reveal data-delay="3">
+      The old website did not carry any of that. It felt dated and generic, the kind of site that could belong to any office rental company, and it quietly undersold the place it was meant to sell. The goal was direct: make the website look and feel like the space it is advertising, and make it easier to move through.
     </p>
 
     <div class="callout" data-reveal data-delay="3">
-      <span class="callout-eyebrow">Core design challenge</span>
-      <p>The app needed to serve two users at once: the older adult managing their own care, and the caregiver managing from a distance.</p>
+      <span class="callout-eyebrow">Starting point</span>
+      <p>If the website feels ordinary, it tells people the space is ordinary too. For a brand built on design, that gap was the whole problem.</p>
     </div>
 
   </div>
 </section>
 
-<!-- IMAGE PAIR — after section 01 -->
-<div class="container--mid" style="padding-bottom: 0;">
-  <div class="img-pair" data-reveal>
-    <div class="img-pair-item">
-      <img
-        src="assets/elder-aid-thumbnail.png"
-        alt="ElderAid screen showing health dashboard"
-        loading="lazy"
-        data-parallax
-      />
-    </div>
-    <div class="img-pair-item">
-      <img
-        src="https://framerusercontent.com/images/Vb0zjCs90BsbiCwoOl2eAVimUA.png?width=1920&height=2444"
-        alt="ElderAid screen showing medication reminders"
-        loading="lazy"
-        data-parallax
-      />
-    </div>
-  </div>
-</div>
-
 <!-- ============================================================
-     02 — THE SOLUTION
+     02 - APPROACH
      ============================================================ -->
 <div class="bleed-alt">
-<section class="section" id="s-solution">
+<section class="section" id="s-approach">
   <div class="container--mid">
 
-    <p class="section-eyebrow" data-reveal>02 · The Solution</p>
+    <p class="section-eyebrow" data-reveal>02 · Approach</p>
     <h2 class="section-heading" data-reveal data-delay="1">
-      Shared health view,<br><em>calm journeys</em>
+      Designed<br><em>end to end</em>
     </h2>
 
     <p class="body-text" data-reveal data-delay="2">
-      This led to the idea of a shared health view. Both seniors and caregivers can check important readings: blood pressure, hydration, oxygen levels and weight, in a simple dashboard. This reduces worry and helps everyone stay on the same page.
+      I designed the site end to end: the layout, the visual language, and the flow through FOMO's different offerings. That covers the enterprise offices, the all-inclusive workspaces, meetings and conferences, the Soi 21 food court, FOMO Design, and the Slingshot accelerator. My manager reviewed the work and gave direction along the way, but the day-to-day design decisions were mine.
     </p>
-
-    <p class="body-text" data-reveal data-delay="2">
-      From there, I designed short, focused journeys with large tap areas, high contrast text and simple layouts. Each task is broken into steps small enough to complete comfortably without feeling rushed or confused.
+    <p class="body-text" data-reveal data-delay="3">
+      The approach leaned on FOMO's real strengths. Big, confident use of the actual spaces through photography and video. A cleaner structure that lets each part of the ecosystem stand on its own instead of competing for attention. And a tone that reads premium without feeling stiff, closer to how the place actually feels in person.
     </p>
 
     <div class="callout" data-reveal data-delay="3">
-      <span class="callout-eyebrow">Design intention</span>
-      <p>Designing for calm was as important as designing for clarity. The interface needed to feel like a helping hand, not a tool that demands attention.</p>
+      <span class="callout-eyebrow">Working principle</span>
+      <p>Let the spaces do the talking. The best asset FOMO has is the room itself, so the design mostly needs to frame it well and get out of the way.</p>
     </div>
 
   </div>
 </section>
 </div>
 
-<!-- IMAGE PAIR — after section 02 -->
-<div class="container--mid" style="padding: 0;">
-  <div class="img-pair" data-reveal>
-    <div class="img-pair-item">
-      <img
-        src="https://framerusercontent.com/images/vasKLrF2PsF5oKv0n0DImOvnPTY.png?width=1920&height=2444"
-        alt="ElderAid appointments screen"
-        loading="lazy"
-        data-parallax
-      />
+<!-- Wide images after section 02 -->
+<!-- Replace each .ph with:
+     <img src="assets/fomo-01.png" alt="FOMO section" data-parallax /> -->
+<div class="container" data-reveal="fade">
+  <div class="wide-image-wrap">
+    <div class="ph">
+      <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span class="ph-label">Screenshot</span>
+      <span class="ph-sub">Suggestion: the "What We Offer" ecosystem section, showing the different spaces.</span>
     </div>
-    <div class="img-pair-item">
-      <img
-        src="https://framerusercontent.com/images/E5ykiX2DgpPCxI7NJzHnDoCWGQ.png?width=1920&height=2444"
-        alt="ElderAid caregiver view screen"
-        loading="lazy"
-        data-parallax
-      />
+  </div>
+</div>
+
+<div class="container" data-reveal="fade">
+  <div class="wide-image-wrap">
+    <div class="ph">
+      <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span class="ph-label">Screenshot</span>
+      <span class="ph-sub">Suggestion: the campus explorer, or one of the individual office pages.</span>
     </div>
   </div>
 </div>
 
 <!-- ============================================================
-     03 — ARCHITECTURE
+     03 - REFLECTION
      ============================================================ -->
-<section class="section" id="s-architecture">
-  <div class="container--mid">
-
-    <p class="section-eyebrow" data-reveal>03 · Architecture</p>
-    <h2 class="section-heading" data-reveal data-delay="1">
-      Shallow navigation,<br><em>clear structure</em>
-    </h2>
-
-    <p class="body-text" data-reveal data-delay="2">
-      ElderAid is built around a single home screen that branches into health data, medication reminders and upcoming appointments. This keeps navigation shallow and avoids confusion. The onboarding experience introduces each feature slowly, a step-by-step approach known to help older adults feel more confident with new apps.
-    </p>
-
-    <p class="body-text" data-reveal data-delay="2">
-      The interface uses plain language and clear spacing. Buttons are large and easy to tap. Cards highlight key information in a simple, structured format. Notifications are designed to look familiar so users instantly understand their purpose.
-    </p>
-
-    <div class="callout" data-reveal data-delay="3">
-      <span class="callout-eyebrow">Guiding principle</span>
-      <p>Technology for older adults must feel safe and calm rather than fast or clever. Every small choice, from font size to confirmation wording, carries real weight.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================================
-     04 — REFLECTION
-     ============================================================ -->
-<div class="bleed-alt">
 <section class="section" id="s-reflection">
   <div class="container--mid">
 
-    <p class="section-eyebrow" data-reveal>04 · Reflection</p>
+    <p class="section-eyebrow" data-reveal>03 · Reflection</p>
     <h2 class="section-heading" data-reveal data-delay="1">
-      What this project<br><em>taught me</em>
+      Real work,<br><em>real deadlines</em>
     </h2>
 
     <p class="body-text" data-reveal data-delay="2">
-      The sprint timeline made this project challenging but focused. I spent the first part defining the problem and the second part building the interface. The fast pace helped me simplify the experience and keep only what was necessary.
+      This one moved fast. We were shipping rather than documenting, so this is not a tidy story of research and validated decisions. It is real client work made under real time pressure, and the honest version of that is more useful than a reconstructed one.
     </p>
-
-    <p class="body-text" data-reveal data-delay="2">
-      If I revisit this project, I would test the design with older adults to see how they respond to the spacing, icons and colours. I would also explore features like fall alerts or a way for doctors to share notes directly in the app. Most importantly, it reinforced how important accessibility is when building something that becomes part of someone's daily routine.
+    <p class="body-text" data-reveal data-delay="3">
+      The site is live and still being built out, so treat this as a snapshot of an ongoing project rather than a finished artifact. The best place to see where it stands right now is the <a href="https://fomo.no/" target="_blank" rel="noopener noreferrer">live site</a>.
     </p>
 
     <div class="callout" data-reveal data-delay="3">
-      <span class="callout-eyebrow">Key takeaway</span>
-      <p>Good design for vulnerable users is not about adding features. It is about removing friction at exactly the moments when friction is most harmful.</p>
+      <span class="callout-eyebrow">What I would add next</span>
+      <p>More time would mean documenting decisions as they happen, and a simple way to check whether the new design actually moves enquiries and tours. That is the piece this project did not have.</p>
     </div>
+
+    <p style="margin-top: 36px;" data-reveal data-delay="4">
+      <a href="https://fomo.no/" target="_blank" rel="noopener noreferrer" class="live-cta">
+        Visit the live site
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </p>
 
   </div>
 </section>
-</div>
 
 <!-- ============================================================
-     OTHER PROJECTS
+     OTHER WORK
      ============================================================ -->
-<section class="other-projects" id="s-other">
+<section class="other-projects">
   <div class="other-inner">
     <h2 data-reveal>Other <em>projects</em></h2>
     <div class="other-grid">
 
-      <a href="ar.html" class="other-card" data-reveal data-delay="1">
+      <a href="viking.html" class="other-card" data-reveal data-delay="1">
         <span class="arrow" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
         <span class="num">01 / 03</span>
-        <h3>Inclusive Education <em>with AR</em></h3>
-        <span class="tag">Augmented Reality · 2024</span>
-      </a>
-
-      <a href="viking.html" class="other-card" data-reveal data-delay="2">
-        <span class="arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-        <span class="num">02 / 03</span>
         <h3>Viking FK <em>· website redesign</em></h3>
         <span class="tag">Website Redesign · 2025</span>
       </a>
 
-      <a href="routex.html" class="other-card" data-reveal data-delay="3">
+      <a href="routex.html" class="other-card" data-reveal data-delay="2">
+        <span class="arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+        <span class="num">02 / 03</span>
+        <h3>RouteX <em>· journey management</em></h3>
+        <span class="tag">Mobile UX · 2025</span>
+      </a>
+
+      <a href="elderaid.html" class="other-card" data-reveal data-delay="3">
         <span class="arrow" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
         <span class="num">03 / 03</span>
-        <h3>RouteX <em>· journey management</em></h3>
-        <span class="tag">Mobile UX · 2025</span>
+        <h3>ElderAid <em>· senior care app</em></h3>
+        <span class="tag">Mobile UX · 2024</span>
       </a>
 
     </div>
@@ -966,16 +1014,12 @@ img { display: block; max-width: 100%; }
   <div class="container">
     <div class="footer-links">
       <a href="index.html">Back to portfolio</a>
-      <a href="mailto:warren.dmello@kilowott.com">warren.dmello@kilowott.com</a>
-      <a href="https://www.linkedin.com/in/warrendmello" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:warrendmellow@gmail.com">warrendmellow@gmail.com</a>
+      <a href="https://www.linkedin.com/in/warren-dmello-47279b238" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
-    <p class="footer-meta">
-      Warren Dmello
-      <span class="sep">·</span>
-      Designer
-      <span class="sep">·</span>
-      2024
-    </p>
+    <div class="footer-meta">
+      FOMO Case Study <span class="sep">·</span> Warren Dmello <span class="sep">·</span> 2026
+    </div>
   </div>
 </footer>
 
@@ -984,123 +1028,138 @@ img { display: block; max-width: 100%; }
      ============================================================ -->
 <script src="smooth-scroll.js"></script>
 <script>
+'use strict';
+
+/* 1. READING PROGRESS BAR */
 (function () {
-  'use strict';
-
-  /* ---- Progress bar ---- */
-  const bar = document.getElementById('progressBar');
-  function updateProgress() {
-    const docH = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
+  var bar = document.getElementById('progressBar');
+  if (!bar) return;
+  function update() {
+    var scrolled = window.scrollY;
+    var total    = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? Math.min(100, (scrolled / total) * 100) : 0).toFixed(1) + '%';
   }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
 
-  /* ---- Top nav scroll state ---- */
-  const nav = document.getElementById('topNav');
-  function updateNav() {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }
+/* 2. TOP NAV SHADOW ON SCROLL */
+(function () {
+  var nav = document.getElementById('topNav');
+  if (!nav) return;
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+})();
 
-  /* ---- Sections for side nav ---- */
-  const sections = [
-    { id: 's-problem',      label: 'Problem' },
-    { id: 's-solution',     label: 'Solution' },
-    { id: 's-architecture', label: 'Architecture' },
-    { id: 's-reflection',   label: 'Reflection' },
+/* 3. SIDE NAV - build + highlight */
+(function () {
+  var sections = [
+    { id: 's-overview',   label: 'Overview'   },
+    { id: 's-approach',   label: 'Approach'   },
+    { id: 's-reflection', label: 'Reflection' },
   ];
 
-  /* ---- Build side nav ---- */
-  const sideNav = document.getElementById('sideNav');
+  var nav = document.getElementById('sideNav');
+  if (!nav) return;
+
+  var items = [];
   sections.forEach(function (sec, i) {
     if (i > 0) {
-      const conn = document.createElement('div');
-      conn.className = 'sn-connector';
-      sideNav.appendChild(conn);
+      var line = document.createElement('div');
+      line.className = 'sn-connector';
+      nav.appendChild(line);
     }
-    const item = document.createElement('div');
+    var item = document.createElement('div');
     item.className = 'sn-item';
-    item.setAttribute('data-target', sec.id);
+    item.setAttribute('aria-label', 'Jump to ' + sec.label);
     item.innerHTML =
       '<span class="sn-label">' + sec.label + '</span>' +
       '<div class="sn-dot"></div>';
     item.addEventListener('click', function () {
-      const el = document.getElementById(sec.id);
+      var el = document.getElementById(sec.id);
       if (el) window.smoothScrollToElement(el, { block: 'start' });
     });
-    sideNav.appendChild(item);
+    nav.appendChild(item);
+    items.push({ item: item, id: sec.id });
   });
 
-  /* ---- Active dot tracking ---- */
-  function updateSideNav() {
-    let active = sections[0].id;
-    sections.forEach(function (sec) {
-      const el = document.getElementById(sec.id);
-      if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.4) {
-        active = sec.id;
-      }
-    });
-    sideNav.querySelectorAll('.sn-item').forEach(function (item) {
-      item.classList.toggle('active', item.getAttribute('data-target') === active);
-    });
-  }
+  if (!('IntersectionObserver' in window)) return;
 
-  /* ---- Scroll reveal ---- */
-  const revealEls = document.querySelectorAll('[data-reveal]');
-  const revealObs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        revealObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(function (el) { revealObs.observe(el); });
+  var els = sections.map(function (s) { return document.getElementById(s.id); }).filter(Boolean);
 
-  /* ---- Parallax on images with data-parallax ---- */
-  const parallaxImgs = document.querySelectorAll('[data-parallax] img, .hero-image-block img');
-  function updateParallax() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    parallaxImgs.forEach(function (img) {
-      const parent = img.closest('[data-parallax]') || img.parentElement;
-      const rect = parent.getBoundingClientRect();
-      const winH = window.innerHeight;
-      if (rect.bottom < 0 || rect.top > winH) return;
-      const progress = (winH - rect.top) / (winH + rect.height);
-      const shift = (progress - 0.5) * 60;
-      img.style.transform = 'translateY(' + shift + 'px)';
-    });
-    /* Hero image parallax */
-    const heroBlock = document.querySelector('.hero-image-block');
-    if (heroBlock) {
-      const heroImg = heroBlock.querySelector('img');
-      if (heroImg) {
-        const rect = heroBlock.getBoundingClientRect();
-        const winH = window.innerHeight;
-        if (rect.bottom >= 0 && rect.top <= winH) {
-          const progress = (winH - rect.top) / (winH + rect.height);
-          const shift = (progress - 0.5) * 60;
-          heroImg.style.transform = 'translateY(' + shift + 'px)';
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        var idx = els.indexOf(e.target);
+        if (idx !== -1) {
+          items.forEach(function (it, i) {
+            it.item.classList.toggle('active', i === idx);
+          });
         }
       }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+  els.forEach(function (el) { io.observe(el); });
+  if (items[0]) items[0].item.classList.add('active');
+})();
+
+/* 4. SCROLL REVEAL */
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('[data-reveal]');
+  if (reduced) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -64px 0px', threshold: 0.06 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+/* 5. PARALLAX */
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  var imgs = document.querySelectorAll('[data-parallax]');
+  if (!imgs.length) return;
+
+  function update() {
+    var viewportH = window.innerHeight;
+    imgs.forEach(function (img) {
+      var rect = img.parentElement.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > viewportH) return;
+      var progress = (rect.top + rect.height / 2 - viewportH / 2) / viewportH;
+      var clamped  = Math.max(-1, Math.min(1, progress));
+      var offset   = clamped * 8;
+      img.style.transform = 'translate3d(0, ' + (-offset) + '%, 0)';
+    });
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        update();
+        ticking = false;
+      });
+      ticking = true;
     }
-  }
-
-  /* ---- Scroll handler ---- */
-  function onScroll() {
-    updateProgress();
-    updateNav();
-    updateSideNav();
-    updateParallax();
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', updateParallax, { passive: true });
-
-  /* Initial calls */
-  updateProgress();
-  updateNav();
-  updateSideNav();
-  updateParallax();
-
+  }, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
 })();
 </script>
 

@@ -17,9 +17,9 @@
    ROOT — portfolio palette + Viking FK navy
    ============================================================ */
 :root {
-  --bg:           #e9e5d8;
-  --bg-2:         #dedad0;
-  --bg-3:         #d4d0c4;
+  --bg:           #e8e7e3;
+  --bg-2:         #dedcd6;
+  --bg-3:         #d2cfc8;
   --ink:          #141414;
   --ink-soft:     #2e2e2e;
   --ink-muted:    #7a7a7a;
@@ -40,8 +40,6 @@
 html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
 body {
   background-color: var(--bg);
-  background-image: radial-gradient(circle, rgba(20, 20, 20, 0.07) 1px, transparent 1px);
-  background-size: 14px 14px;
   color: var(--ink);
   font-family: var(--sans);
   font-size: 16px;
@@ -58,7 +56,7 @@ body::after {
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
-  opacity: 0.055;
+  opacity: 0.045;
   mix-blend-mode: multiply;
 }
 a { color: inherit; text-decoration: none; }
@@ -95,7 +93,7 @@ img { display: block; max-width: 100%; }
   left: 50%;
   transform: translateX(-50%);
   z-index: 300;
-  background: rgba(233, 229, 216, 0.92);
+  background: rgba(232, 231, 227, 0.92);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border: 1px solid var(--rule);
@@ -224,8 +222,6 @@ img { display: block; max-width: 100%; }
 .hero-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(20,20,20,0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
   pointer-events: none;
@@ -398,6 +394,184 @@ img { display: block; max-width: 100%; }
   height: 110%;
   object-fit: cover;
   display: block;
+}
+
+/* ============================================================
+   BEFORE / AFTER COMPARE — full-bleed, edge to edge
+   ============================================================ */
+.ba-compare {
+  --ba-pos: 50%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 56px;
+  overflow: hidden;
+  background: var(--bg-2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: col-resize;
+}
+.ba-layer { position: absolute; inset: 0; }
+.ba-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.ba-layer--after { clip-path: inset(0 0 0 var(--ba-pos)); }
+.ba-tag {
+  position: absolute;
+  top: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--proj);
+  background: rgba(232, 231, 227, 0.92);
+  border: 1px solid rgba(26, 61, 124, 0.2);
+  border-radius: 4px;
+  padding: 5px 10px;
+  pointer-events: none;
+}
+.ba-tag--before { left: 20px; }
+.ba-tag--after  { right: 20px; }
+.ba-divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--ba-pos);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--proj);
+  pointer-events: none;
+}
+.ba-handle {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(232, 231, 227, 0.9);
+  background: var(--proj);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+  box-shadow: 0 6px 20px -6px rgba(20, 20, 20, 0.45);
+}
+.ba-handle svg { width: 18px; height: 18px; }
+.ba-handle:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.ba-compare.dragging,
+.ba-compare.dragging .ba-handle { cursor: grabbing; }
+
+/* ============================================================
+   ANNOTATED FIGURE — numbered markers over a screenshot
+   ============================================================ */
+.annotated-figure { margin: 48px 0; }
+.af-frame { position: relative; }
+.af-frame img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+}
+.af-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(232, 231, 227, 0.9);
+  background: var(--proj);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: box-shadow 0.22s var(--ease);
+}
+.af-marker:hover,
+.af-marker:focus-visible { box-shadow: 0 0 0 6px var(--proj-mid); z-index: 2; }
+.af-marker:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.af-leader {
+  position: absolute;
+  left: 100%; top: 50%;
+  width: 30px; height: 1px;
+  background: var(--proj);
+  opacity: 0;
+  transition: opacity 0.22s var(--ease);
+  pointer-events: none;
+}
+.af-caption {
+  position: absolute;
+  left: calc(100% + 38px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 240px;
+  background: rgba(232, 231, 227, 0.96);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.22s var(--ease);
+  pointer-events: none;
+  z-index: 3;
+}
+.af-marker:hover .af-leader,
+.af-marker:hover .af-caption,
+.af-marker:focus-visible .af-leader,
+.af-marker:focus-visible .af-caption { opacity: 1; }
+.af-marker--flip .af-leader  { left: auto; right: 100%; }
+.af-marker--flip .af-caption { left: auto; right: calc(100% + 38px); }
+.af-legend {
+  list-style: none;
+  counter-reset: af;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 44px;
+}
+.af-legend li {
+  counter-increment: af;
+  position: relative;
+  padding-left: 36px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.af-legend li::before {
+  content: counter(af);
+  position: absolute;
+  left: 0; top: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--proj);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ============================================================
@@ -627,6 +801,9 @@ img { display: block; max-width: 100%; }
   .other-grid { grid-template-columns: 1fr; gap: 10px; }
   .other-projects { padding: 60px 0; }
 
+  /* Annotated figure: hide floating captions, the list below covers them */
+  .af-leader, .af-caption { display: none; }
+  .af-legend { grid-template-columns: 1fr; }
 
   /* Scroll hint aligns with narrowed container padding */
   .hero-scroll-hint { left: 28px; }
@@ -647,6 +824,12 @@ img { display: block; max-width: 100%; }
   .section { padding: 60px 0; }
   /* Wide images: tighter margin + softer radius on phones */
   .wide-image-wrap { margin: 32px 0; border-radius: 14px; }
+  .annotated-figure { margin: 32px 0; }
+  /* Before/after keeps the screenshots' 16:9 so nothing gets cropped */
+  .ba-compare { margin-top: 40px; }
+  .ba-tag { top: 12px; }
+  .ba-tag--before { left: 12px; }
+  .ba-tag--after  { right: 12px; }
   /* Callout: compact padding */
   .callout { padding: 16px 18px; }
   /* Other work section */
@@ -782,6 +965,57 @@ img { display: block; max-width: 100%; }
 </section>
 
 <!-- ============================================================
+     BEFORE / AFTER
+     ============================================================ -->
+<section class="section" id="s-beforeafter">
+  <div class="container--mid">
+    <p class="section-eyebrow" data-reveal>Before / After</p>
+    <h2 class="section-heading" data-reveal data-delay="1">
+      Drag to compare<br><em>old and new</em>
+    </h2>
+    <p class="body-text" data-reveal data-delay="2">
+      The redesign is easier to judge side by side. Drag the divider to compare the old homepage with the new one.
+    </p>
+  </div>
+
+  <div class="ba-compare" id="baCompare" data-reveal="fade" data-delay="3">
+    <div class="ba-layer ba-layer--before">
+      <img
+        src="assets/viking-before.png"
+        alt="Old Viking FK homepage before the redesign"
+        draggable="false"
+      />
+      <span class="ba-tag ba-tag--before" aria-hidden="true">Before</span>
+    </div>
+    <div class="ba-layer ba-layer--after">
+      <img
+        src="https://framerusercontent.com/images/8hCdIwjIiSDH6h9Ao0jFgbyzU.png?width=2880&height=1600"
+        alt="Redesigned Viking FK homepage"
+        draggable="false"
+      />
+      <span class="ba-tag ba-tag--after" aria-hidden="true">After</span>
+    </div>
+    <div class="ba-divider">
+      <button
+        class="ba-handle"
+        id="baHandle"
+        type="button"
+        role="slider"
+        aria-label="Comparison divider between the old and new homepage"
+        aria-orientation="horizontal"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="50"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      02 — SOLUTION
      ============================================================ -->
 <div class="bleed-alt">
@@ -809,15 +1043,49 @@ img { display: block; max-width: 100%; }
 </section>
 </div>
 
-<!-- Wide images after section 02 -->
+<!-- Annotated squad screenshot after section 02.
+     Markers are positioned by percentage via data-x / data-y (0-100). -->
 <div class="container" data-reveal="fade">
-  <div class="wide-image-wrap">
-    <img
-      src="https://framerusercontent.com/images/JeKswnNzZI56NKMV3Ze3DKl5NoA.png?width=2880&height=1868"
-      alt="Viking FK solution screen one"
-      data-parallax
-    />
-  </div>
+  <figure class="annotated-figure">
+    <div class="af-frame">
+      <img
+        src="https://framerusercontent.com/images/JeKswnNzZI56NKMV3Ze3DKl5NoA.png?width=2880&height=1868"
+        alt="Viking FK squad section, annotated with design notes"
+      />
+      <button class="af-marker" type="button" data-x="18" data-y="21"
+        aria-label="Note 1: Ghosted section titles sit behind the headings, adding depth without extra clutter">
+        <span aria-hidden="true">1</span>
+        <span class="af-leader" aria-hidden="true"></span>
+        <span class="af-caption" aria-hidden="true">Ghosted section titles sit behind the headings, adding depth without extra clutter</span>
+      </button>
+      <button class="af-marker" type="button" data-x="43" data-y="48"
+        aria-label="Note 2: Oversized squad numbers echo the shirt print so each player reads at a glance">
+        <span aria-hidden="true">2</span>
+        <span class="af-leader" aria-hidden="true"></span>
+        <span class="af-caption" aria-hidden="true">Oversized squad numbers echo the shirt print so each player reads at a glance</span>
+      </button>
+      <button class="af-marker" type="button" data-x="90" data-y="23"
+        aria-label="Note 3: Carousel controls kept small so the players hold the frame">
+        <span aria-hidden="true">3</span>
+        <span class="af-leader" aria-hidden="true"></span>
+        <span class="af-caption" aria-hidden="true">Carousel controls kept small so the players hold the frame</span>
+      </button>
+      <button class="af-marker" type="button" data-x="64" data-y="91"
+        aria-label="Note 4: Position labels pick up the club's bright accent against the dark theme">
+        <span aria-hidden="true">4</span>
+        <span class="af-leader" aria-hidden="true"></span>
+        <span class="af-caption" aria-hidden="true">Position labels pick up the club's bright accent against the dark theme</span>
+      </button>
+    </div>
+    <figcaption>
+      <ol class="af-legend" role="list">
+        <li>Ghosted section titles sit behind the headings, adding depth without extra clutter</li>
+        <li>Oversized squad numbers echo the shirt print so each player reads at a glance</li>
+        <li>Carousel controls kept small so the players hold the frame</li>
+        <li>Position labels pick up the club's bright accent against the dark theme</li>
+      </ol>
+    </figcaption>
+  </figure>
 </div>
 
 <div class="container" data-reveal="fade">
@@ -992,8 +1260,9 @@ img { display: block; max-width: 100%; }
 /* 3. SIDE NAV — build + highlight */
 (function () {
   var sections = [
-    { id: 's-overview',     label: 'Overview'     },
-    { id: 's-solution',     label: 'Solution'     },
+    { id: 's-overview',     label: 'Overview'       },
+    { id: 's-beforeafter',  label: 'Before / After' },
+    { id: 's-solution',     label: 'Solution'       },
     { id: 's-architecture', label: 'Architecture' },
     { id: 's-reflection',   label: 'Reflection'   },
   ];
@@ -1098,6 +1367,75 @@ img { display: block; max-width: 100%; }
   }, { passive: true });
   window.addEventListener('resize', update, { passive: true });
   update();
+})();
+
+/* 6. BEFORE / AFTER COMPARE */
+(function () {
+  var compare = document.getElementById('baCompare');
+  var handle  = document.getElementById('baHandle');
+  if (!compare || !handle) return;
+
+  var pos = 50;
+
+  function render() {
+    compare.style.setProperty('--ba-pos', pos + '%');
+    handle.setAttribute('aria-valuenow', String(Math.round(pos)));
+    handle.setAttribute('aria-valuetext', Math.round(pos) + '% before, ' + (100 - Math.round(pos)) + '% after');
+  }
+
+  function setFromX(clientX) {
+    var rect = compare.getBoundingClientRect();
+    if (!rect.width) return;
+    var next = ((clientX - rect.left) / rect.width) * 100;
+    pos = Math.max(0, Math.min(100, next));
+    render();
+  }
+
+  var dragging = false;
+
+  compare.addEventListener('pointerdown', function (e) {
+    dragging = true;
+    compare.classList.add('dragging');
+    if (compare.setPointerCapture) compare.setPointerCapture(e.pointerId);
+    setFromX(e.clientX);
+  }, { passive: true });
+
+  compare.addEventListener('pointermove', function (e) {
+    if (dragging) setFromX(e.clientX);
+  }, { passive: true });
+
+  function release() {
+    dragging = false;
+    compare.classList.remove('dragging');
+  }
+  compare.addEventListener('pointerup', release, { passive: true });
+  compare.addEventListener('pointercancel', release, { passive: true });
+
+  handle.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft')       { pos = Math.max(0, pos - 4); }
+    else if (e.key === 'ArrowRight') { pos = Math.min(100, pos + 4); }
+    else if (e.key === 'Home')       { pos = 0; }
+    else if (e.key === 'End')        { pos = 100; }
+    else return;
+    e.preventDefault();
+    render();
+  });
+
+  render();
+})();
+
+/* 7. ANNOTATED FIGURE — markers positioned from data-x / data-y */
+(function () {
+  var markers = document.querySelectorAll('.af-marker');
+  if (!markers.length) return;
+  markers.forEach(function (m) {
+    var x = parseFloat(m.getAttribute('data-x'));
+    var y = parseFloat(m.getAttribute('data-y'));
+    if (isNaN(x) || isNaN(y)) return;
+    m.style.left = x + '%';
+    m.style.top  = y + '%';
+    if (x > 55) m.classList.add('af-marker--flip');
+  });
 })();
 </script>
 
