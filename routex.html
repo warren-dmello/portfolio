@@ -10,28 +10,28 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
    ROOT — portfolio palette + RouteX transit blue
    ============================================================ */
 :root {
-  --bg:           #e5e8ec;
-  --bg-2:         #dadee4;
-  --bg-3:         #cfd4db;
-  --ink:          #141414;
-  --ink-soft:     #2e2e2e;
-  --ink-muted:    #7a7a7a;
-  --rule:         rgba(20, 20, 20, 0.14);
-  --accent:       #3d7e20;
+  --bg:           #080808;
+  --bg-2:         #101012;
+  --bg-3:         #17171a;
+  --ink:          #EFE1C8;
+  --ink-soft:     #c7c4bb;
+  --ink-muted:    #8f8c82;
+  --rule:         rgba(239, 225, 200, 0.14);
+  --accent:       #EFE1C8;
   --proj:         var(--rx);
   /* RouteX project accent — transit blue */
   --rx:           #1850C8;
   --rx-dim:       rgba(24, 80, 200, 0.08);
   --rx-mid:       rgba(24, 80, 200, 0.18);
   --rx-light-text: #7ba7f7;
-  --display:      'Fraunces', 'Times New Roman', serif;
+  --display:      'Instrument Serif', 'Times New Roman', serif;
   --sans:         'Inter Tight', -apple-system, sans-serif;
   --mono:         'Space Mono', 'Courier New', monospace;
   --ease:         cubic-bezier(0.22, 1, 0.36, 1);
@@ -97,11 +97,11 @@ img { display: block; max-width: 100%; }
   left: 50%;
   transform: translateX(-50%);
   z-index: 300;
-  background: rgba(229, 232, 236, 0.92);
+  background: rgba(14, 14, 14, 0.72);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border: 1px solid var(--rule);
-  border-radius: 100px;
+  border-radius: 6px;
   padding: 5px 6px 5px 12px;
   display: flex;
   align-items: center;
@@ -115,7 +115,7 @@ img { display: block; max-width: 100%; }
 }
 .nav-back {
   padding: 7px 14px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
   color: var(--ink-muted);
@@ -124,12 +124,12 @@ img { display: block; max-width: 100%; }
   gap: 7px;
   transition: color 0.22s var(--ease), background 0.22s var(--ease);
 }
-.nav-back:hover { color: var(--ink); background: rgba(20, 20, 20, 0.08); }
+.nav-back:hover { color: var(--ink); background: rgba(239, 225, 200, 0.08); }
 .nav-back svg   { width: 14px; height: 14px; flex-shrink: 0; }
 .nav-sep        { width: 1px; height: 16px; background: var(--rule); margin: 0 2px; }
 .nav-title      {
   padding: 7px 16px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -239,7 +239,7 @@ img { display: block; max-width: 100%; }
   background: var(--rx-dim);
   border: 1px solid rgba(24, 80, 200, 0.2);
   padding: 6px 14px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -362,11 +362,11 @@ img { display: block; max-width: 100%; }
    SECTION WRAPPERS — full-bleed backgrounds
    ============================================================ */
 .bleed-alt  { background: var(--bg-2); }
-.bleed-dark { background: var(--ink); color: var(--bg); }
-.bleed-dark .rule-line         { background: rgba(247,244,213,0.12); }
-.bleed-dark .body-text         { color: rgba(247,244,213,0.72); }
-.bleed-dark .section-eyebrow   { color: rgba(247,244,213,0.45); }
-.bleed-dark .section-eyebrow::before { background: rgba(247,244,213,0.3); }
+.bleed-dark { background: var(--bg-2); color: var(--ink); }
+.bleed-dark .rule-line         { background: rgba(239, 225, 200,0.12); }
+.bleed-dark .body-text         { color: rgba(239, 225, 200,0.72); }
+.bleed-dark .section-eyebrow   { color: rgba(239, 225, 200,0.45); }
+.bleed-dark .section-eyebrow::before { background: rgba(239, 225, 200,0.3); }
 
 /* ============================================================
    SECTION STRUCTURE
@@ -375,7 +375,7 @@ img { display: block; max-width: 100%; }
 .section + .section { border-top: 1px solid var(--rule); }
 .bleed-alt .section + .section,
 .bleed-dark .section + .section { border-top-color: rgba(20,20,20,0.08); }
-.bleed-dark .section + .section { border-top-color: rgba(247,244,213,0.08); }
+.bleed-dark .section + .section { border-top-color: rgba(239, 225, 200,0.08); }
 
 .section-eyebrow {
   font-family: var(--mono);
@@ -406,7 +406,7 @@ img { display: block; max-width: 100%; }
   margin-bottom: 28px;
 }
 .section-heading em       { font-style: italic; font-weight: 300; }
-.bleed-dark .section-heading { color: var(--bg); }
+.bleed-dark .section-heading { color: var(--ink); }
 
 .lead-text {
   font-family: var(--display);
@@ -436,7 +436,7 @@ img { display: block; max-width: 100%; }
 .callout {
   border-left: 3px solid var(--rx);
   background: var(--rx-dim);
-  border-radius: 0 14px 14px 0;
+  border-radius: 0 10px 10px 0;
   padding: 24px 28px;
   margin: 36px 0;
   max-width: 660px;
@@ -465,7 +465,7 @@ img { display: block; max-width: 100%; }
   background: rgba(24, 80, 200, 0.15);
 }
 .callout--dark .callout-eyebrow { color: var(--rx-light-text); }
-.callout--dark p                { color: var(--bg); }
+.callout--dark p                { color: var(--ink); }
 
 /* ============================================================
    PHASE PROGRESSION — three-card layout
@@ -573,7 +573,7 @@ img { display: block; max-width: 100%; }
   color: var(--rx);
   background: var(--rx-dim);
   padding: 3px 10px;
-  border-radius: 100px;
+  border-radius: 6px;
   margin-bottom: 14px;
   opacity: 0;
   transform: translateY(4px);
@@ -619,7 +619,7 @@ img { display: block; max-width: 100%; }
 .principle-card {
   background: var(--bg);
   border: 1px solid var(--rule);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 32px;
   position: relative;
   overflow: hidden;
@@ -633,7 +633,7 @@ img { display: block; max-width: 100%; }
   transform: translateY(-3px);
   box-shadow: 0 18px 40px -16px rgba(20, 20, 20, 0.16);
   border-color: rgba(24, 80, 200, 0.28);
-  background: #fff;
+  background: rgba(239, 225, 200, 0.05);
   outline: none;
 }
 
@@ -704,7 +704,7 @@ img { display: block; max-width: 100%; }
 }
 .vl-col {
   border: 1px solid var(--rule);
-  border-radius: 18px;
+  border-radius: 10px;
   overflow: hidden;
 }
 .vl-col-header {
@@ -714,9 +714,9 @@ img { display: block; max-width: 100%; }
   color: var(--ink-muted);
   border-bottom: 1px solid var(--rule);
 }
-.vl-col--chosen { background: var(--ink); }
-.vl-col--chosen .vl-col-header { color: rgba(247,244,213,0.5); border-bottom-color: rgba(247,244,213,0.1); }
-.vl-col--chosen .vl-row { border-color: rgba(247,244,213,0.08); color: rgba(247,244,213,0.78); }
+.vl-col--chosen { background: rgba(239, 225, 200, 0.08); }
+.vl-col--chosen .vl-col-header { color: rgba(239, 225, 200,0.5); border-bottom-color: rgba(239, 225, 200,0.1); }
+.vl-col--chosen .vl-row { border-color: rgba(239, 225, 200,0.08); color: rgba(239, 225, 200,0.78); }
 .vl-col--chosen .vl-row::before { content: '→'; color: var(--rx-light-text) !important; }
 
 .vl-row {
@@ -743,10 +743,10 @@ img { display: block; max-width: 100%; }
 .palette-chip {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 7px 14px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-size: 13px; font-weight: 500;
 }
-.chip-white { background: #fff; border: 1px solid rgba(10,51,35,0.14); color: var(--ink); }
+.chip-white { background: #fff; border: 1px solid rgba(0,0,0,0.14); color: #141414; }
 .chip-bw    { background: var(--ink); color: var(--bg); }
 .chip-blue  { background: var(--rx); color: #fff; }
 .palette-chip-dot { width: 8px; height: 8px; border-radius: 50%; }
@@ -759,7 +759,7 @@ img { display: block; max-width: 100%; }
 .decision-card {
   background: var(--bg-2);
   border: 1px solid var(--rule);
-  border-radius: 18px;
+  border-radius: 10px;
   overflow: hidden;
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
@@ -769,8 +769,8 @@ img { display: block; max-width: 100%; }
 }
 /* dark variant */
 .decision-card--dark {
-  background: rgba(247,244,213,0.05);
-  border-color: rgba(247,244,213,0.1);
+  background: rgba(239, 225, 200,0.05);
+  border-color: rgba(239, 225, 200,0.1);
 }
 .decision-card--dark:hover { box-shadow: 0 14px 36px -16px rgba(0,0,0,0.3); }
 
@@ -779,10 +779,10 @@ img { display: block; max-width: 100%; }
   border-bottom: 1px solid var(--rule);
   display: flex; align-items: flex-start; gap: 16px;
 }
-.decision-card--dark .dc-header { border-color: rgba(247,244,213,0.1); }
+.decision-card--dark .dc-header { border-color: rgba(239, 225, 200,0.1); }
 
 .dc-icon {
-  width: 34px; height: 34px; border-radius: 10px;
+  width: 34px; height: 34px; border-radius: 8px;
   background: var(--rx-dim);
   border: 1px solid rgba(24,80,200,0.2);
   display: flex; align-items: center; justify-content: center;
@@ -799,7 +799,7 @@ img { display: block; max-width: 100%; }
   color: var(--ink);
   padding-top: 5px; flex: 1;
 }
-.decision-card--dark .dc-title { color: var(--bg); }
+.decision-card--dark .dc-title { color: var(--ink); }
 
 .dc-body {
   display: grid;
@@ -810,7 +810,7 @@ img { display: block; max-width: 100%; }
   border-right: 1px solid var(--rule);
 }
 .dc-col:last-child { border-right: none; }
-.decision-card--dark .dc-col { border-color: rgba(247,244,213,0.1); }
+.decision-card--dark .dc-col { border-color: rgba(239, 225, 200,0.1); }
 
 .dc-label {
   font-size: 10px; font-weight: 600;
@@ -819,14 +819,14 @@ img { display: block; max-width: 100%; }
   margin-bottom: 7px;
 }
 .dc-col--tradeoff .dc-label { color: var(--rx); }
-.decision-card--dark .dc-label { color: rgba(247,244,213,0.4); }
+.decision-card--dark .dc-label { color: rgba(239, 225, 200,0.4); }
 .decision-card--dark .dc-col--tradeoff .dc-label { color: var(--rx-light-text); }
 
 .dc-text {
   font-size: 14px; line-height: 1.65;
   color: var(--ink-soft);
 }
-.decision-card--dark .dc-text { color: rgba(247,244,213,0.68); }
+.decision-card--dark .dc-text { color: rgba(239, 225, 200,0.68); }
 
 /* ============================================================
    SCREEN PLACEHOLDERS — phone-frame styled
@@ -834,7 +834,7 @@ img { display: block; max-width: 100%; }
 .screen-ph {
   background: var(--bg-3);
   border: 1px solid var(--rule);
-  border-radius: 24px;
+  border-radius: 10px;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   position: relative;
@@ -861,15 +861,15 @@ img { display: block; max-width: 100%; }
   transform: translateX(-50%);
   width: 42px; height: 5px;
   border-radius: 3px;
-  background: rgba(10,51,35,0.14);
+  background: rgba(0,0,0,0.14);
 }
 
 
 .screen-ph--dark {
-  background: rgba(247,244,213,0.07);
-  border-color: rgba(247,244,213,0.13);
+  background: rgba(239, 225, 200,0.07);
+  border-color: rgba(239, 225, 200,0.13);
 }
-.screen-ph--dark::before { background: rgba(247,244,213,0.2); }
+.screen-ph--dark::before { background: rgba(239, 225, 200,0.2); }
 
 .screen-label-pill {
   background: var(--ink);
@@ -877,7 +877,7 @@ img { display: block; max-width: 100%; }
   font-size: 11px; font-weight: 600;
   letter-spacing: 0.04em;
   padding: 8px 16px;
-  border-radius: 100px;
+  border-radius: 6px;
   text-align: center;
   max-width: 76%;
   line-height: 1.4;
@@ -891,7 +891,7 @@ img { display: block; max-width: 100%; }
   text-align: center;
   max-width: 68%;
 }
-.screen-ph--dark .screen-sublabel { color: rgba(247,244,213,0.4); }
+.screen-ph--dark .screen-sublabel { color: rgba(239, 225, 200,0.4); }
 
 /* ============================================================
    ANNOTATED SCREEN LAYOUT — screen + annotation side by side
@@ -917,7 +917,7 @@ img { display: block; max-width: 100%; }
   line-height: 1.25;
 }
 .text-col h3 em { font-style: italic; font-weight: 300; }
-.bleed-dark .text-col h3 { color: var(--bg); }
+.bleed-dark .text-col h3 { color: var(--ink); }
 
 .annotations { list-style: none; }
 .ann-item {
@@ -927,7 +927,7 @@ img { display: block; max-width: 100%; }
   align-items: flex-start;
 }
 .ann-item:last-child { border-bottom: none; }
-.bleed-dark .ann-item { border-color: rgba(247,244,213,0.1); }
+.bleed-dark .ann-item { border-color: rgba(239, 225, 200,0.1); }
 
 .ann-arrow {
   font-size: 13px; font-weight: 700;
@@ -940,9 +940,9 @@ img { display: block; max-width: 100%; }
   font-size: 14px; line-height: 1.65;
   color: var(--ink-soft);
 }
-.bleed-dark .ann-text { color: rgba(247,244,213,0.68); }
+.bleed-dark .ann-text { color: rgba(239, 225, 200,0.68); }
 .ann-text strong { font-weight: 600; color: var(--ink); }
-.bleed-dark .ann-text strong { color: var(--bg); }
+.bleed-dark .ann-text strong { color: var(--ink); }
 
 /* ============================================================
    PHASE LABEL PILLS
@@ -950,14 +950,14 @@ img { display: block; max-width: 100%; }
 .phase-pill {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 5px 12px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-size: 10px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
   margin-bottom: 20px;
 }
 .phase-pill--planning  { background: var(--rx-dim); color: var(--rx); border: 1px solid rgba(24,80,200,0.2); }
-.phase-pill--execution { background: rgba(61,126,32,0.09); color: var(--accent); border: 1px solid rgba(61,126,32,0.2); }
-.phase-pill--disruption { background: rgba(20,20,20,0.07); color: var(--ink-soft); border: 1px solid rgba(10,51,35,0.14); }
+.phase-pill--execution { background: rgba(239, 225, 200,0.09); color: var(--accent); border: 1px solid rgba(239, 225, 200,0.2); }
+.phase-pill--disruption { background: rgba(20,20,20,0.07); color: var(--ink-soft); border: 1px solid rgba(0,0,0,0.14); }
 .phase-pill--disruption-dark { background: rgba(24,80,200,0.18); color: var(--rx-light-text); border: 1px solid rgba(24,80,200,0.3); }
 
 /* ============================================================
@@ -966,18 +966,18 @@ img { display: block; max-width: 100%; }
 .tradeoff-wrap {
   margin-top: 48px;
   border: 1px solid var(--rule);
-  border-radius: 18px;
+  border-radius: 10px;
   overflow: hidden;
 }
 .tradeoff-head {
   display: grid; grid-template-columns: 1.6fr 1fr 1.2fr;
   padding: 14px 24px;
-  background: var(--ink);
+  background: var(--bg-2);
 }
 .tradeoff-head-col {
   font-size: 10px; font-weight: 600;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(247,244,213,0.5);
+  color: rgba(239, 225, 200,0.5);
 }
 .tradeoff-row {
   display: grid; grid-template-columns: 1.6fr 1fr 1.2fr;
@@ -1015,7 +1015,7 @@ img { display: block; max-width: 100%; }
 .validation-card {
   background: var(--bg);
   border: 1px solid var(--rule);
-  border-radius: 18px;
+  border-radius: 10px;
   padding: 28px;
   position: relative;
   overflow: hidden;
@@ -1029,7 +1029,7 @@ img { display: block; max-width: 100%; }
   position: absolute; top: 10px; right: 16px;
   font-family: var(--display);
   font-size: 72px; font-weight: 300; line-height: 1;
-  color: rgba(10,51,35,0.05);
+  color: rgba(0,0,0,0.05);
   user-select: none; pointer-events: none;
 }
 .vc-tag {
@@ -1037,7 +1037,7 @@ img { display: block; max-width: 100%; }
   background: var(--rx-dim);
   border: 1px solid rgba(24,80,200,0.2);
   padding: 4px 11px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-size: 10px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--rx);
@@ -1120,7 +1120,7 @@ img { display: block; max-width: 100%; }
 .other-card {
   background: var(--bg);
   border: 1px solid var(--rule);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 28px 28px 24px;
   display: flex;
   flex-direction: column;
@@ -1130,7 +1130,7 @@ img { display: block; max-width: 100%; }
 }
 .other-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 40px -16px rgba(10,51,35,0.14);
+  box-shadow: 0 18px 40px -16px rgba(0,0,0,0.14);
   border-color: rgba(24,80,200,0.22);
 }
 .other-card .arrow {
@@ -1245,7 +1245,7 @@ img { display: block; max-width: 100%; }
 
   .dc-body      { grid-template-columns: 1fr; }
   .dc-col       { border-right: none !important; border-bottom: 1px solid var(--rule); }
-  .decision-card--dark .dc-col { border-bottom-color: rgba(247,244,213,0.1); }
+  .decision-card--dark .dc-col { border-bottom-color: rgba(239, 225, 200,0.1); }
   .dc-col:last-child           { border-bottom: none !important; }
 
   .tradeoff-wrap { display: none; }
@@ -1271,7 +1271,7 @@ img { display: block; max-width: 100%; }
   /* Hero: less vertical padding on phones */
   .hero { padding: 80px 0 52px; }
   /* Phone frames: further cap on small screens */
-  .screen-ph { border-radius: 18px; }
+  .screen-ph { border-radius: 10px; }
   /* Callout: tighter padding */
   .callout { padding: 16px 18px; }
   /* Reflection: compact on phone */
@@ -1287,7 +1287,7 @@ img { display: block; max-width: 100%; }
 
   /* Other work section */
   .other-projects { padding: 48px 0; }
-  .other-card { padding: 22px 22px 18px; border-radius: 14px; }
+  .other-card { padding: 22px 22px 18px; border-radius: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1308,7 +1308,7 @@ img { display: block; max-width: 100%; }
 .tradeoff-card-mobile {
   background: var(--bg-2);
   border: 1px solid var(--rule);
-  border-radius: 16px; padding: 22px;
+  border-radius: 10px; padding: 22px;
 }
 .tcm-feature {
   font-family: var(--display);
@@ -1613,7 +1613,7 @@ img { display: block; max-width: 100%; }
 
     <div class="palette-chips" data-reveal data-delay="1">
       <div class="palette-chip chip-white">
-        <span class="palette-chip-dot" style="background:#fff;border:1px solid rgba(10,51,35,0.2);"></span>
+        <span class="palette-chip-dot" style="background:#fff;border:1px solid rgba(0,0,0,0.2);"></span>
         White-first for outdoor legibility
       </div>
       <div class="palette-chip chip-bw">
@@ -2182,6 +2182,8 @@ img { display: block; max-width: 100%; }
 <!-- ============================================================
      SCRIPTS
      ============================================================ -->
+<script src="lenis.min.js"></script>
+<script src="lenis-init.js"></script>
 <script src="smooth-scroll.js"></script>
 <script>
 'use strict';

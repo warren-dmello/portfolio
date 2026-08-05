@@ -34,6 +34,8 @@
   function smoothScrollTo(targetY) {
     targetY = clampScrollY(targetY);
 
+    if (window.lenis) { window.lenis.scrollTo(targetY); return; }
+
     if (reduced) {
       window.scrollTo(0, targetY);
       return;

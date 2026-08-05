@@ -10,24 +10,24 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,1,300;9..144,1,400&family=Inter+Tight:wght@400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
    ROOT — portfolio palette + AR moss green
    ============================================================ */
 :root {
-  --bg:           #e6e9e6;
-  --bg-2:         #dce0dc;
-  --bg-3:         #d0d5d0;
-  --ink:          #141414;
-  --ink-soft:     #2e2e2e;
-  --ink-muted:    #7a7a7a;
-  --rule:         rgba(20, 20, 20, 0.14);
+  --bg:           #080808;
+  --bg-2:         #101012;
+  --bg-3:         #17171a;
+  --ink:          #EFE1C8;
+  --ink-soft:     #c7c4bb;
+  --ink-muted:    #8f8c82;
+  --rule:         rgba(239, 225, 200, 0.14);
   --proj:         #4e6e28;
   --proj-dim:     rgba(78, 110, 40, 0.09);
   --proj-mid:     rgba(78, 110, 40, 0.18);
-  --display:      'Fraunces', 'Times New Roman', serif;
+  --display:      'Instrument Serif', 'Times New Roman', serif;
   --sans:         'Inter Tight', -apple-system, sans-serif;
   --mono:         'Space Mono', 'Courier New', monospace;
   --ease:         cubic-bezier(0.22, 1, 0.36, 1);
@@ -93,11 +93,11 @@ img { display: block; max-width: 100%; }
   left: 50%;
   transform: translateX(-50%);
   z-index: 300;
-  background: rgba(230, 233, 230, 0.92);
+  background: rgba(14, 14, 14, 0.72);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border: 1px solid var(--rule);
-  border-radius: 100px;
+  border-radius: 6px;
   padding: 5px 6px 5px 12px;
   display: flex;
   align-items: center;
@@ -111,7 +111,7 @@ img { display: block; max-width: 100%; }
 }
 .nav-back {
   padding: 7px 14px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
   color: var(--ink-muted);
@@ -120,12 +120,12 @@ img { display: block; max-width: 100%; }
   gap: 7px;
   transition: color 0.22s var(--ease), background 0.22s var(--ease);
 }
-.nav-back:hover { color: var(--ink); background: rgba(20, 20, 20, 0.08); }
+.nav-back:hover { color: var(--ink); background: rgba(239, 225, 200, 0.08); }
 .nav-back svg   { width: 14px; height: 14px; flex-shrink: 0; }
 .nav-sep        { width: 1px; height: 16px; background: var(--rule); margin: 0 2px; }
 .nav-title      {
   padding: 7px 16px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -234,7 +234,7 @@ img { display: block; max-width: 100%; }
   background: var(--proj-dim);
   border: 1px solid rgba(78, 110, 40, 0.2);
   padding: 6px 14px;
-  border-radius: 100px;
+  border-radius: 6px;
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 400;
@@ -366,17 +366,17 @@ img { display: block; max-width: 100%; }
 }
 .hero-image-wrap img {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   aspect-ratio: 16 / 9;
   max-height: 520px;
   object-fit: cover;
   will-change: transform;
   transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
-  box-shadow: 0 24px 64px -24px rgba(10,51,35,0.18);
+  box-shadow: 0 24px 64px -24px rgba(0,0,0,0.18);
 }
 .hero-image-wrap img:hover {
   transform: translateY(-4px);
-  box-shadow: 0 36px 80px -24px rgba(10,51,35,0.24);
+  box-shadow: 0 36px 80px -24px rgba(0,0,0,0.24);
 }
 
 /* ============================================================
@@ -437,7 +437,7 @@ img { display: block; max-width: 100%; }
 .callout {
   border-left: 3px solid var(--proj);
   background: var(--proj-dim);
-  border-radius: 0 14px 14px 0;
+  border-radius: 0 10px 10px 0;
   padding: 24px 28px;
   margin: 36px 0;
   max-width: 660px;
@@ -474,16 +474,16 @@ img { display: block; max-width: 100%; }
 }
 .image-pair img {
   width: 100%;
-  border-radius: 18px;
+  border-radius: 10px;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   will-change: transform;
   transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
-  box-shadow: 0 16px 48px -16px rgba(10,51,35,0.14);
+  box-shadow: 0 16px 48px -16px rgba(0,0,0,0.14);
 }
 .image-pair img:hover {
   transform: translateY(-5px);
-  box-shadow: 0 28px 64px -16px rgba(10,51,35,0.22);
+  box-shadow: 0 28px 64px -16px rgba(0,0,0,0.22);
 }
 .image-pair-wrap {
   padding: 64px 0;
@@ -523,7 +523,7 @@ img { display: block; max-width: 100%; }
 .other-card {
   background: var(--bg);
   border: 1px solid var(--rule);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 28px 28px 24px;
   display: flex;
   flex-direction: column;
@@ -533,7 +533,7 @@ img { display: block; max-width: 100%; }
 }
 .other-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 40px -16px rgba(10,51,35,0.14);
+  box-shadow: 0 18px 40px -16px rgba(0,0,0,0.14);
   border-color: rgba(78,110,40,0.22);
 }
 .other-card .arrow {
@@ -667,7 +667,7 @@ img { display: block; max-width: 100%; }
   .callout { padding: 16px 18px; }
   /* Other work section */
   .other-projects { padding: 48px 0; }
-  .other-card { padding: 22px 22px 18px; border-radius: 14px; }
+  .other-card { padding: 22px 22px 18px; border-radius: 10px; }
   /* Safe word wrapping for large headings */
   .section-heading { overflow-wrap: break-word; }
 }
@@ -973,6 +973,8 @@ img { display: block; max-width: 100%; }
 <!-- ============================================================
      SCRIPTS
      ============================================================ -->
+<script src="lenis.min.js"></script>
+<script src="lenis-init.js"></script>
 <script src="smooth-scroll.js"></script>
 <script>
 'use strict';
