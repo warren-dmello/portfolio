@@ -850,7 +850,14 @@
     .about { padding: 72px 16px; }
     .about-para { font-size: 20px; line-height: 1.62; }
 
-    /* Footer CTA: tighter bottom padding */
+    /* Torn edge: the desktop polygon has ~70 fine teeth that read as noisy,
+       near-vertical jags on a narrow screen. Use a coarser, gentler tear. */
+    .about__tear {
+      clip-path: polygon(0% 0%, 100% 0%,
+        100% 91%, 91.7% 93.6%, 83.3% 90.2%, 75% 92.8%, 66.7% 89.6%,
+        58.3% 92.6%, 50% 89.9%, 41.7% 93%, 33.3% 90%, 25% 92.7%,
+        16.7% 89.8%, 8.3% 93.2%, 0% 90.4%);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1224,7 +1231,9 @@
     function update() {
       var rect = about.getBoundingClientRect();
       var vh = window.innerHeight || 1;
-      var p = (vh - rect.top) / (vh * 1.7);
+      // Shorter travel on mobile so the peel completes earlier (was too late).
+      var factor = window.innerWidth <= 600 ? 1.15 : 1.7;
+      var p = (vh - rect.top) / (vh * factor);
       p = p < 0 ? 0 : p > 1 ? 1 : p;
       tear.style.setProperty('--tear-p', p.toFixed(3));
     }
