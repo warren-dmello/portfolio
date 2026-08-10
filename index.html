@@ -471,7 +471,10 @@
     position: relative;
     overflow: hidden;
     background: #B10400;
-    padding: clamp(120px, 18vh, 190px) 32px;
+    /* Taller top well so the paragraph sits low enough to still be arriving
+       while the page-tear finishes peeling (was cut short after the collage
+       was removed). */
+    padding: clamp(220px, 40vh, 400px) 32px clamp(120px, 18vh, 190px);
     color: #EFE1C8;
   }
   /* Noise knocks the red back and adds grain */
@@ -786,7 +789,7 @@
     /* About: use clip-path instead of negative margins to prevent overflow */
     .about {
       margin: 0;
-      padding: 100px 20px;
+      padding: 200px 20px 100px;
     }
     .about-inner { max-width: 100%; }
   }
@@ -847,7 +850,7 @@
     .case-spark--bl { width: 18px; left: 18px; }
 
     /* About: reduce vertical padding on phones */
-    .about { padding: 72px 16px; }
+    .about { padding: 150px 16px 72px; }
     .about-para { font-size: 20px; line-height: 1.62; }
 
     /* Torn edge: the desktop polygon has ~70 fine teeth that read as noisy,
